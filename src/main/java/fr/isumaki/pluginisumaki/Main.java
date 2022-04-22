@@ -10,7 +10,7 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        Bukkit.getServer().getConsoleSender().sendMessage("§eLe plugin Isumaki à bien démarré demarre");
+        Bukkit.getServer().getConsoleSender().sendMessage("§eLe plugin Isumaki a bien demarre");
         Bukkit.getPluginManager().registerEvents(new RegisterEvents(), this);
 
         getCommand("alert").setExecutor(new Alert());

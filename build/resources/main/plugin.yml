@@ -1,0 +1,10 @@
+name: PluginIsumaki
+version: 1.0
+main: fr.isumaki.pluginisumaki.Main
+commands:
+  alert:
+    description: Commande d'alert
+  enderchest:
+    description: Commande d'enderchest
+    aliases:
+      - ec

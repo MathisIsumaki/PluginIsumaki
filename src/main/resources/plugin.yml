@@ -8,3 +8,4 @@ commands:
     description: Commande d'enderchest
     aliases:
       - ec
+  sethome:

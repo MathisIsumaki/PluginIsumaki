@@ -8,3 +8,7 @@ commands:
     description: Commande d'enderchest
     aliases:
       - ec
+  sethome:
+    description: Commande de sethome
+  home:
+    description: Commande d'home

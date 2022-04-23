@@ -9,3 +9,6 @@ commands:
     aliases:
       - ec
   sethome:
+    description: Commande de sethome
+  home:
+    description: Commande d'home

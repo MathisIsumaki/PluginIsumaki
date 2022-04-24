@@ -3,10 +3,12 @@ package fr.isumaki.pluginisumaki;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.SkullType;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -15,28 +17,33 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import static sun.audio.AudioPlayer.player;
+
+
 public class RegisterEvents implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         String playerName = event.getPlayer().getName();
-        event.setJoinMessage(playerName+" vient de se connecter");
+        event.setJoinMessage(playerName + " vient de se connecter");
     }
 
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent event) {
         String playerName = event.getPlayer().getName();
-        event.setQuitMessage(playerName+" vient de quitter");
+        event.setQuitMessage(playerName + " vient de quitter");
     }
-
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
 
-        if(event.getItem() == null) return;
-
-        if (event.getItem().getType() == Material.CARROT_ITEM){
-            Inventory inv = Bukkit.createInventory(null,54,"Player List");
-            ItemStack glass = new ItemStack(Material.STAINED_GLASS_PANE, 1 , (short) 9);
+        if (event.getItem() == null) return;
+        Player player = event.getPlayer();
+        if (event.getItem().getType() == Material.CARROT_ITEM) {
+            Inventory inv = Bukkit.createInventory(null, 54, "Player List");
+            ItemStack glass = new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 9);
             ItemMeta glassm = glass.getItemMeta();
             glassm.setDisplayName(" ");
             glass.setItemMeta(glassm);
@@ -66,11 +73,11 @@ public class RegisterEvents implements Listener {
             inv.setItem(51, glass);
             inv.setItem(52, glass);
             inv.setItem(53, glass);
-            Bukkit.getOnlinePlayers().forEach(player -> {
+            Bukkit.getOnlinePlayers().forEach(p -> {
                 ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) SkullType.PLAYER.ordinal());
                 SkullMeta skullm = (SkullMeta) Bukkit.getItemFactory().getItemMeta(Material.SKULL_ITEM);
-                skullm.setDisplayName(player.getName());
-                skullm.setOwner(player.getName());
+                skullm.setDisplayName(p.getName());
+                skullm.setOwner(p.getName());
                 skull.setItemMeta(skullm);
                 inv.addItem(skull);
 
@@ -79,15 +86,28 @@ public class RegisterEvents implements Listener {
             event.getPlayer().openInventory(inv);
 
         }
-
+        if (event.getItem().hasItemMeta() && event.getItem().getItemMeta().getDisplayName().equals("§6Lightning Rod")) {
+            player.getWorld().strikeLightning(player.getTargetBlock(new HashSet<Material>() {{
+                add(Material.AIR);
+            }}, 300).getLocation().add(0.0, 1, 0.0));
+        }
     }
+
 
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (event.getInventory().getName() == "Player List"){
+        if (event.getInventory().getName() == "Player List") {
             event.setCancelled(true);
+
         }
     }
+    @EventHandler
+    public void onPlayerInteractAtEntity(PlayerInteractEntityEvent e) {
+        if(e.getPlayer().getItemInHand() != null && e.getPlayer().getItemInHand().hasItemMeta()
+                && e.getPlayer().getItemInHand().getItemMeta().getDisplayName().equals("§6Lightning Rod"))
+            e.getPlayer().getWorld().strikeLightning(e.getRightClicked().getLocation());
 
+
+    }
 }

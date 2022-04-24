@@ -1,15 +1,14 @@
 package fr.isumaki.pluginisumaki;
 
-import fr.isumaki.pluginisumaki.commands.Alert;
-import fr.isumaki.pluginisumaki.commands.EnderChest;
-import fr.isumaki.pluginisumaki.commands.Home;
-import fr.isumaki.pluginisumaki.commands.SetHome;
+import fr.isumaki.pluginisumaki.commands.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
+
+
 
 public class Main extends JavaPlugin {
 
@@ -29,6 +28,7 @@ public class Main extends JavaPlugin {
         getCommand("sethome").setExecutor(new SetHome());
         getCommand("home").setExecutor(new Home());
         System.out.println(getConfig().get("Homes"));
+        CommandManager.initCommand();
 
         // get la config
     }
@@ -58,6 +58,7 @@ public class Main extends JavaPlugin {
             });
         });
         saveConfig();
+
     }
 
 

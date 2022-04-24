@@ -25,5 +25,5 @@ test {
     useJUnitPlatform()
 }
 jar{
-    destinationDir = file("C:\\Users\\mathi\\Documents\\ServeurTest1.8\\plugins")
+    destinationDir = file("C:\\Users\\Gauthier\\Desktop\\local server\\plugins")
 }

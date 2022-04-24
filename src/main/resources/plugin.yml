@@ -12,3 +12,5 @@ commands:
     description: Commande de sethome
   home:
     description: Commande d'home
+  LightningRod:
+    description: Commande give LightningRod

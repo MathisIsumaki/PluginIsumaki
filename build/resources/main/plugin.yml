@@ -12,5 +12,11 @@ commands:
     description: Commande de sethome
   home:
     description: Commande d'home
-  LightningRod:
+  lightningrod:
     description: Commande give LightningRod
+  gm:
+    description: Commande changement de gamemode
+  top:
+    description: Commande pour téléporter le joueur au block le plus haut
+  speed :
+    description: Commande pour modifier player speed

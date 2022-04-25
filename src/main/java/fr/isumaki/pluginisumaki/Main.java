@@ -19,7 +19,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         INSTANCE = this;
-        Bukkit.getServer().getConsoleSender().sendMessage("§eLe plugin Isumaki a bien demarre");
+        Bukkit.getServer().getConsoleSender().sendMessage("§2Le plugin Isumaki a bien demarre");
         Bukkit.getPluginManager().registerEvents(new RegisterEvents(), this);
         saveDefaultConfig();
 
@@ -27,6 +27,9 @@ public class Main extends JavaPlugin {
         getCommand("enderchest").setExecutor(new EnderChest());
         getCommand("sethome").setExecutor(new SetHome());
         getCommand("home").setExecutor(new Home());
+        getCommand("gm").setExecutor(new Gm());
+        getCommand("top").setExecutor(new Top());
+        getCommand("speed").setExecutor(new Speed());
         System.out.println(getConfig().get("Homes"));
         CommandManager.initCommand();
 
@@ -35,7 +38,7 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        Bukkit.getServer().getConsoleSender().sendMessage("§eLe plugin Isumaki vient de s'eteindre");
+        Bukkit.getServer().getConsoleSender().sendMessage("§2Le plugin Isumaki vient de s'eteindre");
     }
 
     public void updateHomes(){

@@ -30,6 +30,10 @@ public class Main extends JavaPlugin {
         getCommand("gm").setExecutor(new Gm());
         getCommand("top").setExecutor(new Top());
         getCommand("speed").setExecutor(new Speed());
+        getCommand("fly").setExecutor(new Fly());
+        getCommand("freeze").setExecutor(new Freeze());
+        getCommand("unfreeze").setExecutor(new Unfreeze());
+        getCommand("heal").setExecutor(new Heal());
         System.out.println(getConfig().get("Homes"));
         CommandManager.initCommand();
 

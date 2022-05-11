@@ -8,10 +8,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.inventory.InventoryPickupItemEvent;
+import org.bukkit.event.player.*;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -30,8 +28,7 @@ public class RegisterEvents implements Listener {
         String playerName = event.getPlayer().getName();
         event.setJoinMessage(playerName + " vient de se connecter");
     }
-
-    @EventHandler
+        @EventHandler
     public void onPlayerLeave(PlayerQuitEvent event) {
         String playerName = event.getPlayer().getName();
         event.setQuitMessage(playerName + " vient de quitter");
@@ -96,7 +93,7 @@ public class RegisterEvents implements Listener {
 
 
     @EventHandler
-    public void onInventoryClick(InventoryClickEvent event) {
+    public void onInventoryClick(InventoryPickupItemEvent event) {
         if (event.getInventory().getName() == "Player List") {
             event.setCancelled(true);
 

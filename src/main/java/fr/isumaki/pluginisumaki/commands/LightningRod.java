@@ -32,7 +32,7 @@ public class LightningRod implements CommandExecutor {
         ItemMeta customM = LightningRod.getItemMeta();
         customM.setDisplayName("§6Lightning Rod");
         customM.addItemFlags(ItemFlag.HIDE_ATTRIBUTES,ItemFlag.HIDE_ENCHANTS);
-        customM.addEnchant(Enchantment.DAMAGE_ALL,5,true);
+        customM.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL,1,true);
         LightningRod.setItemMeta(customM);
         player.getInventory().addItem(LightningRod);
         player.getWorld();

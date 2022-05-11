@@ -1,9 +1,12 @@
 package fr.isumaki.pluginisumaki.commands;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.EnderCrystal;
 import org.bukkit.entity.Player;
 
 public class EnderChest implements CommandExecutor {
@@ -19,6 +22,7 @@ public class EnderChest implements CommandExecutor {
                 Player playerec = Bukkit.getPlayer(args[0]);
                 if(playerec != null){
                     ((Player)sender).openInventory(playerec.getEnderChest());
+
                 }else sender.sendMessage("Ce joueur n'est pas connecté");
             }
 

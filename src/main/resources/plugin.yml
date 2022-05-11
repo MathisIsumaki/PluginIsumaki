@@ -3,20 +3,28 @@ version: 1.0
 main: fr.isumaki.pluginisumaki.Main
 commands:
   alert:
-    description: Commande d'alert
+    description: Commande de Broadcast
   enderchest:
-    description: Commande d'enderchest
+    description: Commande pour ouvrir l'ender chest
     aliases:
       - ec
   sethome:
-    description: Commande de sethome
+    description: Commande pour sethome
   home:
-    description: Commande d'home
+    description: Commande pour aller a un home
   lightningrod:
-    description: Commande give LightningRod
+    description: Commande por give LightningRod
   gm:
-    description: Commande changement de gamemode
+    description: Commande pour changer de gamemode
   top:
     description: Commande pour téléporter le joueur au block le plus haut
   speed :
     description: Commande pour modifier player speed
+  fly:
+    description: Commande pour voler
+  freeze:
+    description: Commande pour imobiliser un joueur
+  unfreeze:
+    description: Commande pour débloquer un joueur
+  heal:
+    description: Commande pour régénérer la vie d'un joueur
